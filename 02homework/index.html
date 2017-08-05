@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+   // 1. forEach 循环遍历
+   var arr = [1,2,3,4,5];
+   arr.forEach(function (value,index,array) {
+       console.log(value); // 打印遍历的数组内容
+//       console.log(index); // 打印数组的索引
+//       console.log(array); // 打印整个数组
+   })
+   // 使数组里面的数字翻倍
+   var Arr = []
+   arr.forEach(function (num) {
+       num = num * 2
+       Arr.push(num)
+   })
+   console.log(Arr)
+
+   // 2. map 映射 原数组被映射成新数组
+   // 取出年龄 翻倍
+   var users = [
+       {name: "jzy", "age": "15"},
+       {name: "wqq", "age": "16"},
+       {name: "zxy", "age": "17"}
+   ];
+   var theAge = users.map(function (user) {
+       return user.age * 2;
+   });
+   console.log(theAge);
+
+   // 3. filter 筛选
+   var data = [ 1, 2, 3, 4];
+   var arrayFilter = data.filter(function(item) {
+       // 返回删选条件,通过的留下
+       return item > 2;
+   });
+   console.log(arrayFilter);
+
+   // 4. some 判断是否有内容符合所设定的条件,通过返回true
+   var theArr = [5,8,10,15,18]
+   function judge(item) {
+       return item > 20
+   }
+   if(theArr.some(judge)){
+       alert('符合条件')
+   }else{
+       alert('不符合条件')
+   }
+
+   // 5. every 必须所有内容都符合条件才返回true
+   var thisArr = [2,4,6,8,10]
+   function judge1(item) {
+       return item > 0
+   }
+   if(thisArr.some(judge1)){
+       alert('符合条件')
+   }else{
+       alert('不符合条件')
+   }
+
+   // 6. indexOf 匹配不成功 返回-1 成功则返回整数索引值
+   var bArr = [1,5,7,9,10,13,15]
+   console.log(bArr.indexOf(5)) // 匹配成功 返回索引为1
+   console.log(bArr.indexOf(8)) // 匹配失败 返回-1
+   console.log(bArr.indexOf(7,1)) // 从索引为1 开始查找 匹配成功 返回索引为2
+   console.log(bArr.indexOf(9,4)) // 从索引为4开始查找 匹配不成功 返回-1
+
+   // 7. lastIndexOf 从后往前匹配 匹配不成功 返回-1 成功则返回整数索引值
+   console.log(bArr.lastIndexOf(5)) // 匹配成功 返回索引为1
+   console.log(bArr.lastIndexOf(8)) // 匹配失败 返回-1
+   console.log(bArr.lastIndexOf(7,2)) // 从索引为2 后往前开始查找 匹配成功 返回索引为2
+   console.log(bArr.lastIndexOf(9,4)) // 从索引为4 后往前开始查找 匹配成功 返回索引为3
+
+   // 8. reduce 迭代
+   var cArr = [2,4,6,8]
+   var sum = cArr.reduce(function (old, now) {
+       return old + now
+   })
+   console.log(sum)
+   // 初始设置 old等于初始值等于2 now等于4 
+   // 一次迭代 数组为[6,6,8]
+   // 为此迭代 数组为[12,8]
+   // 三次 now = undefined sum = 20
+
+   // 9. reduceRight 从后往前 迭代
+   var dArr= [1, 3, 5, 7];
+   var sum1 = dArr.reduceRight(function (old, now, index) {
+       if (index == 0) {
+           return old + now;
+       }
+       return old - now;
+   });
+
+   console.log(sum1);
+   // 初始设置 old等于初始值等于7 now等于5 index = 3
+   // 一次迭代 数组为[1,3,2] index = 2
+   // 二次迭代 数组为[1,-1] index = 1
+   // 第三次迭代 index = 0 sum1 = old + new = 0
+</script>
+</body>
+</html>
